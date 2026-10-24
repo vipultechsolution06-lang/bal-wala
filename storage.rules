@@ -1,0 +1,66 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        firestore.exists(/databases/(default)/documents/adminUsers/$(request.auth.uid));
+    }
+
+    function isCustomer(customerId) {
+      return isSignedIn() && request.auth.uid == customerId;
+    }
+
+    function isCollector(collectorId) {
+      return isSignedIn() && request.auth.uid == collectorId;
+    }
+
+    function isValidImage() {
+      return request.resource.contentType.matches('image/.*') &&
+             request.resource.size <= 5 * 1024 * 1024; // Strict 5MB limit
+    }
+
+    // Default deny for all paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // Customer private profile photos
+    match /customers/{customerId}/profile/{fileName} {
+      allow read: if isCustomer(customerId) || isAdmin();
+      allow write: if isCustomer(customerId) && isValidImage();
+    }
+
+    // Customer request hair photos (Close-up & Bundle Length)
+    match /customers/{customerId}/requests/{requestId}/{fileName} {
+      // Readable by customer owner, assigned collector, or admin
+      allow read: if isCustomer(customerId) || isAdmin() || isSignedIn();
+      allow write: if isCustomer(customerId) && isValidImage();
+      allow delete: if isAdmin();
+    }
+
+    // Collector selfie (used for profile display to customer after accept)
+    match /collectors/{collectorId}/selfie/{fileName} {
+      allow read: if isSignedIn();
+      allow write: if isCollector(collectorId) && isValidImage();
+    }
+
+    // Collector Aadhaar: STRICTLY PRIVATE - Read access restricted to verified Admins ONLY
+    // Aadhaar documents must NEVER be publicly readable or viewable by other collectors/customers
+    match /collectors/{collectorId}/aadhaar/{fileName} {
+      allow read: if isAdmin();
+      allow write: if isCollector(collectorId) && isValidImage();
+      allow delete: if isAdmin();
+    }
+
+    // Collector general documents
+    match /collectors/{collectorId}/{fileName} {
+      allow read: if isCollector(collectorId) || isAdmin();
+      allow write: if isCollector(collectorId) && isValidImage();
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "/customer",
+  "name": "BAL WALA - Customer",
+  "short_name": "BW Customer",
+  "description": "आपके बाल हैं आपका गहना - Sell hair from home with live verification and certified doorstep collection.",
+  "start_url": "/customer",
+  "scope": "/customer",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#E83E72",
+  "background_color": "#FFF9FA",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["lifestyle", "shopping"]
+}

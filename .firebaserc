@@ -1,0 +1,20 @@
+{
+  "projects": {
+    "default": "bal-wala-1d2a2"
+  },
+  "targets": {
+    "bal-wala-1d2a2": {
+      "hosting": {
+        "official": [
+          "balwala-official"
+        ],
+        "collector": [
+          "balwala-collector"
+        ],
+        "admin": [
+          "balwala-admin"
+        ]
+      }
+    }
+  }
+}

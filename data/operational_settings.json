@@ -1,0 +1,16 @@
+{
+  "maxCollectorDistanceKm": 10,
+  "leadAcceptWindowMinutes": 5,
+  "customerSearchTimeoutMinutes": 5,
+  "morningTipNotificationTime": "07:00",
+  "eveningTipNotificationTime": "17:00",
+  "collectorFreeTrialMonths": 6,
+  "futureSubscriptionAmount": 299,
+  "mandatoryCollectorApproval": false,
+  "subscriptionMasterSwitch": false,
+  "generalFreePeriodEnabled": true,
+  "generalFreePeriodMonths": 6,
+  "freeLeadOfferEnabled": false,
+  "freeLeadOfferCount": 0,
+  "gracePeriodDays": 7
+}

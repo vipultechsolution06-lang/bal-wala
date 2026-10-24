@@ -1,0 +1,155 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net (default deny)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/adminUsers/$(request.auth.uid));
+    }
+
+    function isCustomer(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isCollector(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // 1. General Users collection
+    match /users/{userId} {
+      allow get: if isCustomer(userId) || isCollector(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if (isSignedIn() && request.auth.uid == userId &&
+                       request.resource.data.role == resource.data.role) || isAdmin();
+      allow delete: if isAdmin();
+
+      // Device tokens subcollection (users/{userId}/devices/{deviceId})
+      match /devices/{deviceId} {
+        allow read, write: if (isSignedIn() && request.auth.uid == userId) || isAdmin();
+      }
+    }
+
+    // 2. Customers collection
+    match /customers/{customerId} {
+      allow get: if isCustomer(customerId) || isAdmin();
+      allow list: if isAdmin();
+      // On creation, source cannot be altered from frontend; critical fields locked
+      allow create: if isCustomer(customerId) &&
+                    request.resource.data.role == 'CUSTOMER' &&
+                    (request.resource.data.source == 'DIRECT' || request.resource.data.source == 'REFERRAL');
+      // Protected fields: role, source, referredByCollectorId cannot be changed by client
+      allow update: if (isCustomer(customerId) && 
+                       request.resource.data.role == resource.data.role &&
+                       request.resource.data.source == resource.data.source &&
+                       request.resource.data.referredByCollectorId == resource.data.referredByCollectorId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // 3. Collectors collection
+    match /collectors/{collectorId} {
+      allow get: if isSignedIn();
+      allow list: if isSignedIn();
+      // New registration is always UNVERIFIED; cannot self-verify
+      allow create: if isCollector(collectorId) &&
+                    request.resource.data.role == 'COLLECTOR' &&
+                    request.resource.data.verificationStatus == 'UNVERIFIED';
+      // Protected fields: verificationStatus, verifiedAt, verifiedByAdminId, sameDayLeadBlocked, subscriptionStatus
+      allow update: if (isCollector(collectorId) &&
+                       request.resource.data.role == resource.data.role &&
+                       request.resource.data.verificationStatus == resource.data.verificationStatus &&
+                       request.resource.data.verifiedAt == resource.data.verifiedAt &&
+                       request.resource.data.verifiedByAdminId == resource.data.verifiedByAdminId &&
+                       request.resource.data.sameDayLeadBlocked == resource.data.sameDayLeadBlocked &&
+                       request.resource.data.subscriptionStatus == resource.data.subscriptionStatus) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // 4. Requests collection
+    match /requests/{requestId} {
+      // Customer sees own requests; Assigned collector sees accepted/offered request; Admin sees all
+      allow get: if (isSignedIn() && (resource.data.customerId == request.auth.uid || resource.data.currentCollectorId == request.auth.uid)) || isAdmin();
+      allow list: if (isSignedIn() && resource.data.customerId == request.auth.uid) || isAdmin();
+      
+      // Customer can create request
+      allow create: if isSignedIn() && request.resource.data.customerId == request.auth.uid;
+      
+      // Status, OTP, assignment, and completion are locked strictly to Admin / Server Functions
+      // Prevents client direct status manipulation (e.g. jumping NEW -> COMPLETED)
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // 5. Dealers collection
+    // PRIORITY 3 FIX: Disallow open client reads!
+    // Direct Firestore access restricted to Admin. Collectors access only their own area dealers via server API.
+    match /dealers/{dealerId} {
+      allow read, write: if isAdmin();
+    }
+
+    // 6. Area Demand & Votes
+    // PRIORITY 5 FIX: Clients cannot write directly to prevent artificial metric tampering
+    // Voting is processed atomically via backend endpoint /api/customer/vote
+    match /areaDemand/{areaId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // 7. Six-Month Collector Change Requests
+    // PRIORITY 6: Customers submit change requests; Admin reviews/approves
+    match /collectorChangeRequests/{changeId} {
+      allow read: if (isSignedIn() && resource.data.customerId == request.auth.uid) || isAdmin();
+      allow create: if isSignedIn() && request.resource.data.customerId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+
+    // 8. Hair Care Tips & Styles (Public Read, Admin Write)
+    match /hairCareTips/{tipId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /hairStyles/{styleId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 9. Notifications (Signed-in Read, Admin Write)
+    match /notifications/{notifId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // 10. Subscriptions
+    match /subscriptions/{subId} {
+      allow read: if (isSignedIn() && resource.data.collectorId == request.auth.uid) || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // 11. Operational Settings
+    match /settings/{docId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // 12. Admin Users (Authorized Admins only)
+    match /adminUsers/{adminId} {
+      allow read: if isAdmin();
+      allow write: if false; // Provisioned via Server Admin SDK / CLI only
+    }
+
+    // 13. Audit Logs (Tamper-proof: Read only by Admin; Write only by Admin/Server)
+    match /auditLogs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAdmin();
+      allow update, delete: if false;
+    }
+  }
+}

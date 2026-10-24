@@ -1,0 +1,13 @@
+{
+  "name": "BAL WALA",
+  "description": "BAL WALA - Hair selling and collection platform connecting customers with hair collectors. \u0906\u092a\u0915\u0947 \u092c\u093e\u0932 \u0939\u0948\u0902 \u0906\u092a\u0915\u093e \u0917\u0939\u0928\u093e, \u0906\u092a\u0915\u0947 \u092c\u093e\u0932 \u0939\u0948\u0902 \u0906\u092a\u0915\u093e \u0938\u094b\u0928\u093e\u0964",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation",
+    "notifications",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" fill="none">
+  <!-- Background Badge (optional) -->
+  <rect width="200" height="200" rx="48" fill="#0F172A"/>
+  
+  <!-- Subtle Outer Halo / Ring -->
+  <circle cx="100" cy="100" r="86" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.15"/>
+  
+  <!-- Artistic Monogram BW -->
+  <g stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Stem of B with top droplet -->
+    <path d="M 48 48 L 48 152" stroke-width="12"/>
+    <circle cx="48" cy="44" r="4" fill="#FFFFFF" stroke="none"/>
+    
+    <!-- Upper Bowl of B -->
+    <path d="M 48 52 C 84 46, 102 62, 102 82 C 102 100, 84 102, 52 102" stroke-width="10"/>
+    
+    <!-- Lower Bowl of B (flows into W) -->
+    <path d="M 50 102 C 92 102, 112 120, 110 142 C 108 154, 96 156, 52 152" stroke-width="10"/>
+    
+    <!-- Flowing Hair Accent linking B to W -->
+    <path d="M 82 46 C 96 38, 114 42, 122 56" stroke-width="4" stroke-opacity="0.7"/>
+
+    <!-- Artistic W with rhythmic wave curves -->
+    <path d="M 100 84 L 118 152 L 138 102 L 158 152 L 176 72" stroke-width="10"/>
+    
+    <!-- Sparkle accent at top-right of W (beauty touch) -->
+    <path d="M 176 56 Q 176 64 182 64 Q 176 64 176 72 Q 176 64 170 64 Q 176 64 176 56 Z" fill="#FFFFFF" stroke="none"/>
+  </g>
+</svg>

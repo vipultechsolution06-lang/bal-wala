@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Container Badge (Monochrome Deep Slate/Black) -->
+  <rect x="4" y="4" width="112" height="112" rx="28" fill="#09090B" stroke="#27272A" stroke-width="2"/>
+  <!-- Subtle Inner Hairline Ring -->
+  <circle cx="60" cy="60" r="48" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.14" fill="none"/>
+
+  <!-- ARTISTIC BW MONOGRAM (Black & White, Premium Hair/Beauty Brand) -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Letter B Vertical Stem -->
+    <path d="M 32 30 L 32 88" stroke="#FFFFFF" stroke-width="7"/>
+    <!-- Top Crown Serif of B -->
+    <path d="M 26 30 L 38 30" stroke="#FFFFFF" stroke-width="3.5"/>
+    <!-- Bottom Base Serif of B -->
+    <path d="M 26 88 L 38 88" stroke="#FFFFFF" stroke-width="3.5"/>
+
+    <!-- Upper Bowl of B (Calligraphic Hair Curve) -->
+    <path d="M 32 31 C 48 30, 60 38, 60 48 C 60 58, 48 60, 32 60" stroke="#FFFFFF" stroke-width="6"/>
+
+    <!-- Lower Bowl of B (Flowing Silken Hair Wave) -->
+    <path d="M 32 60 C 52 59, 64 68, 64 78 C 64 88, 49 88, 32 88" stroke="#FFFFFF" stroke-width="6"/>
+
+    <!-- Interlocking Letter W (Artistic Dynamic Strands) -->
+    <path d="M 55 52 L 67 88 L 78 58 L 89 88 L 99 42" stroke="#FFFFFF" stroke-width="6"/>
+
+    <!-- Beauty Flourish: Upward Hair Tip on right leg of W -->
+    <path d="M 99 42 C 100 36, 103 33, 106 33" stroke="#FFFFFF" stroke-width="3.5"/>
+
+    <!-- Subtle Luxury Glimmer / Diamond Dot above W -->
+    <circle cx="99" cy="27" r="2.75" fill="#FFFFFF" stroke="none"/>
+  </g>
+</svg>

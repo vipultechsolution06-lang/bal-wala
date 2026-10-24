@@ -1,0 +1,27 @@
+{
+  "id": "/collector",
+  "name": "BAL WALA - Collector Partner",
+  "short_name": "BW Collector",
+  "description": "Collector partner app for doorstep hair pickup, certified digital weighing, and instant payouts.",
+  "start_url": "/collector",
+  "scope": "/collector",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#047857",
+  "background_color": "#064E3B",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "productivity"]
+}

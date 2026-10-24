@@ -1,0 +1,121 @@
+{
+  "entities": {
+    "Customer": {
+      "title": "Customer",
+      "description": "Hair selling customer profile locked to role CUSTOMER",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "mobile": { "type": "string", "maxLength": 15 },
+        "role": { "type": "string", "enum": ["CUSTOMER"] },
+        "source": { "type": "string", "enum": ["DIRECT", "REFERRAL"] },
+        "referredByCollectorId": { "type": "string" },
+        "address": { "type": "string", "maxLength": 300 },
+        "area": { "type": "string", "maxLength": 100 },
+        "city": { "type": "string", "maxLength": 100 },
+        "district": { "type": "string", "maxLength": 100 },
+        "state": { "type": "string", "maxLength": 100 },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "name", "mobile", "role", "source", "latitude", "longitude"]
+    },
+    "Collector": {
+      "title": "Collector",
+      "description": "Hair collector profile locked to role COLLECTOR",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "mobile": { "type": "string", "maxLength": 15 },
+        "role": { "type": "string", "enum": ["COLLECTOR"] },
+        "address": { "type": "string", "maxLength": 300 },
+        "area": { "type": "string", "maxLength": 100 },
+        "city": { "type": "string", "maxLength": 100 },
+        "district": { "type": "string", "maxLength": 100 },
+        "state": { "type": "string", "maxLength": 100 },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "selfieUrl": { "type": "string" },
+        "aadhaarFrontUrl": { "type": "string" },
+        "aadhaarBackUrl": { "type": "string" },
+        "verificationStatus": { "type": "string", "enum": ["UNVERIFIED", "VERIFIED", "SUSPENDED"] },
+        "verifiedAt": { "type": "string" },
+        "verifiedByAdminId": { "type": "string" },
+        "isAvailable": { "type": "boolean" },
+        "activeRequestId": { "type": "string" },
+        "sameDayLeadBlocked": { "type": "boolean" },
+        "blockedUntilDate": { "type": "string" },
+        "subscriptionStatus": { "type": "string", "enum": ["FREE_TRIAL", "ACTIVE", "EXPIRED"] }
+      },
+      "required": ["uid", "name", "mobile", "role", "verificationStatus", "selfieUrl"]
+    },
+    "HairRequest": {
+      "title": "HairRequest",
+      "description": "Hair selling request created by customer with 2 live camera photos and server-generated 4-digit OTP",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerId": { "type": "string" },
+        "source": { "type": "string", "enum": ["DIRECT", "REFERRAL"] },
+        "referredByCollectorId": { "type": "string" },
+        "customerNameSnapshot": { "type": "string" },
+        "customerMobileSnapshot": { "type": "string" },
+        "addressSnapshot": { "type": "string" },
+        "areaSnapshot": { "type": "string" },
+        "citySnapshot": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "closeUpPhotoUrl": { "type": "string" },
+        "bundleLengthPhotoUrl": { "type": "string" },
+        "deadline": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["NEW", "OFFERED", "ACCEPTED", "COLLECTOR_COMING", "OTP_PENDING", "COMPLETED", "REJECTED", "EXPIRED", "CANCELLED"]
+        },
+        "currentCollectorId": { "type": "string" },
+        "collectionOtp": { "type": "string", "maxLength": 4 },
+        "otpStatus": { "type": "string", "enum": ["PENDING", "VERIFIED"] },
+        "acceptedAt": { "type": "string" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["id", "customerId", "source", "closeUpPhotoUrl", "bundleLengthPhotoUrl", "deadline", "status"]
+    },
+    "Dealer": {
+      "title": "Dealer",
+      "description": "Hair buyer dealer registered in specific area",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "mobile": { "type": "string", "maxLength": 15 },
+        "fullAddress": { "type": "string", "maxLength": 300 },
+        "area": { "type": "string", "maxLength": 100 },
+        "city": { "type": "string", "maxLength": 100 },
+        "isActive": { "type": "boolean" }
+      },
+      "required": ["id", "name", "mobile", "area", "city", "isActive"]
+    }
+  },
+  "firestore": {
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Customer accounts"
+    },
+    "/collectors/{collectorId}": {
+      "schema": "Collector",
+      "description": "Collector accounts"
+    },
+    "/requests/{requestId}": {
+      "schema": "HairRequest",
+      "description": "Hair collection requests and live status"
+    },
+    "/dealers/{dealerId}": {
+      "schema": "Dealer",
+      "description": "Area dealers managed by Admin"
+    }
+  }
+}

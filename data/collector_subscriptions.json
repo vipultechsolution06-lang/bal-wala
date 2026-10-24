@@ -1,0 +1,151 @@
+{
+  "col-1": {
+    "subscriptionStatus": "ACTIVE",
+    "paidSubscriptionStartAt": "2026-10-06T01:55:40.575Z",
+    "paidSubscriptionEndAt": "2027-06-03T01:55:40.575Z",
+    "paidPlanId": "plan-monthly",
+    "freePeriodStartAt": "2026-08-07T01:55:36.665Z",
+    "freePeriodEndAt": "2027-02-03T01:55:36.665Z",
+    "freeLeadRemaining": 15,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-10T06:06:34.849Z"
+  },
+  "col-2": {
+    "subscriptionStatus": "ACTIVE",
+    "paidSubscriptionStartAt": "2026-10-06T01:55:40.617Z",
+    "paidSubscriptionEndAt": "2027-01-04T01:55:40.617Z",
+    "paidPlanId": "plan-monthly",
+    "freePeriodStartAt": "2026-08-27T01:55:36.665Z",
+    "freePeriodEndAt": "2027-02-23T01:55:36.665Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-10T06:06:34.869Z"
+  },
+  "col-3": {
+    "subscriptionStatus": "ACTIVE",
+    "paidSubscriptionStartAt": "2026-10-06T01:56:03.772Z",
+    "paidSubscriptionEndAt": "2026-10-21T01:56:03.772Z",
+    "paidPlanId": "plan-monthly",
+    "freePeriodStartAt": "2026-10-06T01:55:36.665Z",
+    "freePeriodEndAt": "2027-04-04T01:55:36.665Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-06T01:56:03.772Z"
+  },
+  "col-4": {
+    "subscriptionStatus": "ACTIVE",
+    "paidSubscriptionStartAt": "2026-09-16T01:55:36.665Z",
+    "paidSubscriptionEndAt": "2027-09-16T01:55:36.665Z",
+    "paidPlanId": "plan-annual-pro",
+    "freePeriodStartAt": "2026-03-20T01:55:36.665Z",
+    "freePeriodEndAt": "2026-09-16T01:55:36.665Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-06T01:55:36.665Z"
+  },
+  "col-5": {
+    "subscriptionStatus": "EXPIRED",
+    "freePeriodStartAt": "2026-03-10T01:55:36.665Z",
+    "freePeriodEndAt": "2026-09-06T01:55:36.665Z",
+    "freeLeadRemaining": 3,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-06T01:55:36.665Z"
+  },
+  "col-6": {
+    "subscriptionStatus": "EXPIRED",
+    "freePeriodStartAt": "2026-02-28T01:55:36.665Z",
+    "freePeriodEndAt": "2026-08-27T01:55:36.665Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-06T01:55:36.665Z"
+  },
+  "col-7": {
+    "subscriptionStatus": "ACTIVE",
+    "paidSubscriptionStartAt": "2026-09-09T00:00:00.000Z",
+    "paidSubscriptionEndAt": "2026-10-09T00:00:00.000Z",
+    "paidPlanId": "plan-monthly-pro",
+    "freePeriodStartAt": "2025-10-09T00:00:00.000Z",
+    "freePeriodEndAt": "2026-04-07T00:00:00.000Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-04T00:00:00.000Z"
+  },
+  "col-8": {
+    "subscriptionStatus": "FREE_TRIAL",
+    "freePeriodStartAt": "2026-04-11T00:00:00.000Z",
+    "freePeriodEndAt": "2026-10-08T00:00:00.000Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-04T00:00:00.000Z"
+  },
+  "col-9": {
+    "subscriptionStatus": "ACTIVE",
+    "paidSubscriptionStartAt": "2026-08-30T00:00:00.000Z",
+    "paidSubscriptionEndAt": "2026-09-29T00:00:00.000Z",
+    "paidPlanId": "plan-monthly-pro",
+    "freePeriodStartAt": "2026-03-08T00:00:00.000Z",
+    "freePeriodEndAt": "2026-09-04T00:00:00.000Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-06T01:55:36.665Z"
+  },
+  "col-1792605869521": {
+    "subscriptionStatus": "FREE_TRIAL",
+    "freePeriodStartAt": "2026-10-21T18:04:29.521Z",
+    "freePeriodEndAt": "2027-04-19T18:04:29.521Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-21T18:04:29.521Z"
+  },
+  "col-1792605869539": {
+    "subscriptionStatus": "FREE_TRIAL",
+    "freePeriodStartAt": "2026-10-21T18:04:29.539Z",
+    "freePeriodEndAt": "2027-04-19T18:04:29.539Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-21T18:04:29.539Z"
+  },
+  "col-1792605965939": {
+    "subscriptionStatus": "FREE_TRIAL",
+    "freePeriodStartAt": "2026-10-21T18:06:05.940Z",
+    "freePeriodEndAt": "2027-04-19T18:06:05.940Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-21T18:06:05.940Z"
+  },
+  "col-1792608291920": {
+    "subscriptionStatus": "FREE_TRIAL",
+    "freePeriodStartAt": "2026-10-21T18:44:51.920Z",
+    "freePeriodEndAt": "2027-04-19T18:44:51.920Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-21T18:44:51.920Z"
+  },
+  "col-1792608291935": {
+    "subscriptionStatus": "FREE_TRIAL",
+    "freePeriodStartAt": "2026-10-21T18:44:51.935Z",
+    "freePeriodEndAt": "2027-04-19T18:44:51.935Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-21T18:44:51.935Z"
+  },
+  "col-1792608789190": {
+    "subscriptionStatus": "FREE_TRIAL",
+    "freePeriodStartAt": "2026-10-21T18:53:09.190Z",
+    "freePeriodEndAt": "2027-04-19T18:53:09.190Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-21T18:53:09.190Z"
+  },
+  "col-1792609869897": {
+    "subscriptionStatus": "ACTIVE",
+    "paidSubscriptionStartAt": "2026-10-21T19:11:09.930Z",
+    "paidSubscriptionEndAt": "2026-10-11T19:11:09.930Z",
+    "paidPlanId": "plan-monthly",
+    "freePeriodStartAt": "2026-10-21T19:11:09.897Z",
+    "freePeriodEndAt": "2027-04-19T19:11:09.897Z",
+    "freeLeadRemaining": 0,
+    "freeLeadUsed": 0,
+    "updatedAt": "2026-10-21T19:11:09.930Z"
+  }
+}
